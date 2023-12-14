@@ -15,6 +15,14 @@ var express = require('express')
 //   the user by ID when deserializing.  However, since this example does not
 //   have a database of user records, the complete Steam profile is serialized
 //   and deserialized.
+const admin = require('firebase-admin');
+
+const serviceAccount = require('./config/serviceAccountKey.json');
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
 passport.serializeUser(function(user, done) {
   done(null, user);
 });
@@ -65,9 +73,17 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(__dirname + '/../../public'));
 
-app.get('/', function(req, res){
+app.get('/',function(req, res){
   if(req.user)
-    res.redirect(`https://future-estate-qv7fgsbgg-developers-b11.vercel.app/?success=true&id=${req.user.id}&name=${req.user.name}&url=${req.user.photos[2].value}`);
+  {
+    try{
+      admin.auth().createUserWithEmailAndPassword(req.user.id+"@steam.com", req.user.id);
+    } catch(e){
+      console.log(e);
+    }
+    
+    res.redirect(`https://future-estate-qv7fgsbgg-developers-b11.vercel.app/?success=true&id=${req.user.id}&name=${req.user.displayName}&url=${req.user.photos[2].value}`);
+  }
     // console.log('authenticated in app');
     //res.redirect('http://localhost:3000?success=true');
   // res.render('index', { user: req.user });
