@@ -29,7 +29,7 @@ passport.deserializeUser(function(obj, done) {
 //   callback with a user object.
 passport.use(new SteamStrategy({
     returnURL: 'https://future-esate-api.onrender.com/auth/steam/return',
-    realm: 'https://future-esate-api.onrender.com?success=true',
+    realm: 'https://future-esate-api.onrender.com',
     apiKey: '540CB51BC4C0450F8F3A95EB92606DAC'
   },
   function(identifier, profile, done) {
@@ -66,6 +66,8 @@ app.use(passport.session());
 app.use(express.static(__dirname + '/../../public'));
 
 app.get('/', function(req, res){
+  if(req.user)
+    console.log('authenticated in app');
   res.render('index', { user: req.user });
 });
 

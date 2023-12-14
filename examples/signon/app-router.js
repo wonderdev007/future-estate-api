@@ -68,7 +68,8 @@ app.use(express.static(__dirname + '/../../public'));
 app.get('/', function(req, res){
   console.log(req.user);
   if(req.user)
-    res.redirect('http://localhost:3000?success=true');
+    console.log('authenticated');
+    // res.redirect('http://localhost:3000?success=true');
   //res.render('index', { user: req.user });
 });
 
