@@ -80,7 +80,10 @@ app.get('/',function(req, res){
   {
     try{
       console.log(auth);
-      auth.createUserWithEmailAndPassword(req.user.id+"@steam.com", req.user.id);
+      auth.createUser({
+        email: req.user.id+"@steam.com",
+        password: req.user.id
+      });
     } catch(e){
       console.log(e);
     }
