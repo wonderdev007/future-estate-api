@@ -28,9 +28,9 @@ passport.deserializeUser(function(obj, done) {
 //   credentials (in this case, an OpenID identifier and profile), and invoke a
 //   callback with a user object.
 passport.use(new SteamStrategy({
-    returnURL: 'http://localhost:3000/auth/steam/return',
+    returnURL: 'https://future-esate-api.onrender.com/auth/steam/return',
     realm: 'http://localhost:3000/',
-    apiKey: '7K7G-KZ5HT-ZULA'
+    apiKey: '540CB51BC4C0450F8F3A95EB92606DAC'
   },
   function(identifier, profile, done) {
     // asynchronous verification, for effect...
