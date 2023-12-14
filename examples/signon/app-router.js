@@ -30,7 +30,7 @@ passport.deserializeUser(function(obj, done) {
 //   callback with a user object.
 passport.use(new SteamStrategy({
     returnURL: 'https://future-esate-api.onrender.com/auth/steam/return',
-    realm: 'https://future-esate-api.onrender.com/',
+    realm: 'https://future-esate-api.onrender.com?success=true',
     apiKey: '540CB51BC4C0450F8F3A95EB92606DAC'
   },
   function(identifier, profile, done) {
