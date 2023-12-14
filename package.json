@@ -48,7 +48,7 @@
     "example-router": "node examples/signon/app-router.js"
   },
   "engines": {
-    "node": "16.x",
+    "node": "18.x",
     "yarn": ">= 1.22.11"
   },
   "licenses": [
