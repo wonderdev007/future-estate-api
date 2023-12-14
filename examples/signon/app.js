@@ -84,7 +84,7 @@ app.get('/logout', function(req, res){
 //   the user to steamcommunity.com.  After authenticating, Steam will redirect the
 //   user back to this application at /auth/steam/return
 app.get('/auth/steam',
-  passport.authenticate('steam', { failureRedirect: '/' }),
+  passport.authenticate('steam', { failureRedirect: '/error' }),
   function(req, res) {
     res.redirect('/');
   });
@@ -97,7 +97,6 @@ app.get('/auth/steam',
 app.get('/auth/steam/return',
   passport.authenticate('steam', { failureRedirect: '/' }),
   function(req, res) {
-    console.log('here!')
     res.redirect('/');
   });
 
