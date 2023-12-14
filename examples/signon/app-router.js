@@ -29,7 +29,7 @@ passport.deserializeUser(function(obj, done) {
 //   credentials (in this case, an OpenID identifier and profile), and invoke a
 //   callback with a user object.
 passport.use(new SteamStrategy({
-    returnURL: 'http://localhost:3000/auth/steam/return',
+    returnURL: 'https://future-esate-api.onrender.com/auth/steam/return',
     realm: 'http://localhost:3000/',
     apiKey: 'Your API key here'
   },
