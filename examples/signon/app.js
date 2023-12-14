@@ -67,7 +67,7 @@ app.use(express.static(__dirname + '/../../public'));
 
 app.get('/', function(req, res){
   if(req.user)
-    res.redirect(`http://localhost:3000/?success=true&id=${req.user.id}&name=${req.user.name}&url=${req.user.photos[2].value}`);
+    res.redirect(`https://https://future-estate-qv7fgsbgg-developers-b11.vercel.app/?success=true&id=${req.user.id}&name=${req.user.name}&url=${req.user.photos[2].value}`);
     // console.log('authenticated in app');
     //res.redirect('http://localhost:3000?success=true');
   // res.render('index', { user: req.user });
