@@ -67,7 +67,7 @@ app.use(express.static(__dirname + '/../../public'));
 
 app.get('/', function(req, res){
   if(req.user)
-    res.redirect("https://www.codingninjas.com/");
+    res.redirect(`http://localhost:3000/?success=true&id=${req.user.id}&name=${req.user.name}&url=${req.user.photos[2].value}`);
     // console.log('authenticated in app');
     //res.redirect('http://localhost:3000?success=true');
   // res.render('index', { user: req.user });
