@@ -85,22 +85,10 @@ app.get('/',function(req, res){
         email: req.user.id+"@steam.com",
         password: req.user.id
       });
-      console.log('signedup id:',auth.createUser.uid);
-      // database.ref('/users'+auth.createUser.uid,{
-      //   name: req.user.displayName,
-      //   email: req.user.id,
-      //   provider: "steam",
-      //   photoURL: req.user.photos[2].value,
-      //   uid: auth.currentUser.uid,
-      // }, function(error){
-      //   if(error) console.log(error);
-      //   else console.log('Successfully updated user table');
-      // })
     } catch(e){
       console.log(e);
     }
-    
-    res.redirect(`https://future-estate-qv7fgsbgg-developers-b11.vercel.app/?success=true&id=${req.user.id}&name=${req.user.displayName}&url=${req.user.photos[2].value}`);
+    res.redirect(`https://future-estate-iota.vercel.app/?success=true&id=${req.user.id}&name=${req.user.displayName}&url=${req.user.photos[2].value}`);
   }
     // console.log('authenticated in app');
     //res.redirect('http://localhost:3000?success=true');
@@ -116,9 +104,6 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 
-app.get("/old-url" , (req,res) => {
-	res.redirect("https://www.codingninjas.com/");
-});
 // GET /auth/steam
 //   Use passport.authenticate() as route middleware to authenticate the
 //   request.  The first step in Steam authentication will involve redirecting
