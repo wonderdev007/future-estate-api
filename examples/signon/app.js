@@ -20,7 +20,8 @@ const admin = require('firebase-admin');
 const serviceAccount = require('./config/serviceAccountKey.json');
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://future-estate-f8bcf-default-rtdb.firebaseio.com"
 });
 
 var auth = admin.auth();
