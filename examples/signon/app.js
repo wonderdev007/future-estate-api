@@ -24,6 +24,7 @@ admin.initializeApp({
 });
 
 var auth = admin.auth();
+var database = admin.database();
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -79,11 +80,21 @@ app.get('/',function(req, res){
   if(req.user)
   {
     try{
-      console.log(auth);
       auth.createUser({
         email: req.user.id+"@steam.com",
         password: req.user.id
       });
+      console.log('signedup id:',auth.createUser.uid);
+      // database.ref('/users'+auth.createUser.uid,{
+      //   name: req.user.displayName,
+      //   email: req.user.id,
+      //   provider: "steam",
+      //   photoURL: req.user.photos[2].value,
+      //   uid: auth.currentUser.uid,
+      // }, function(error){
+      //   if(error) console.log(error);
+      //   else console.log('Successfully updated user table');
+      // })
     } catch(e){
       console.log(e);
     }
