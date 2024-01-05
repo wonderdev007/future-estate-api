@@ -96,12 +96,14 @@ app.use(express.json());
 app.get("/", async function (req, res) {
   if (req.user) {
     try {
+      console.log(1);
       await auth.createUser({
         email: req.user.id + "@steam.com",
         password: req.user.id,
       });
+      console.log(2, req.user.id);
       const ranking = await fetch(
-        `http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v2?key=540CB51BC4C0450F8F3A95EB92606DAC&steamid=${req.body.id}&appid=730`,
+        `http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v2?key=540CB51BC4C0450F8F3A95EB92606DAC&steamid=${req.user.id}&appid=730`,
         {
           method: "get",
           headers: {
@@ -111,7 +113,9 @@ app.get("/", async function (req, res) {
           },
         }
       );
+      
       const data = await ranking.json();
+      console.log(3, data);
       const time = new Date();
       await db.collection('rewards').doc(req.user.id).set({
         dailyheadshot: data.playerstats.stats[23].value,
